@@ -3,9 +3,11 @@
 #+EMAIL: cbidler@spscommerce.com
 #+DATE: September 12, 2014
 #+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/2.5.0/
+#+REVEAL_THEME: simple
 * Introduction - Who is this guy?
  - Chris Johnson Bidler
  - Joined SPS Commerce in June of 2014, on Document Engine team
+ - Grew up in the Twin Cities and lived there until 2011
  - Lives in South Bend, IN but ironically doesn't follow college football
  - Software developer since 1998, *mostly* Java, some C/C++, some Perl
  - Long tenure in healthcare IT, moved to retail SaaS in 2011
@@ -36,11 +38,16 @@
   - Virtually no "boilerplate" code to accomplish tasks
     - Smaller functions that can be composed
     - Easier to understand a system quicky when it fits on a screen
+  - ClojureScript
+    - Compiles to JavaScript
+    - Plays well with frameworks like Angular/React
+    - Provides the best way out of "callback hell" I have yet seen
   - Solving problems becomes about solving the problems
 * When might you want to consider Clojure
-  - You are starting a new project
-    - Getting polyglot *IDE-level projects* to build and run can be a challenge
-    - Polyglot projects that federate smaller services are much easier
+  - Your project is largely "about" concurrency
+    - Producer/consumer
+    - Map/reduce
+    - Document transforms
   - Interop needs are amenable
     - Java
     - REST APIs
@@ -53,9 +60,15 @@
     - Python libraries with no Java equivalent
     - Proprietary data formats (do we have these?)
   - Building a thick-client GUI application
-  - Performance needs not met by modern JVMs
+  - Anywhere Java isn't a good fit for whatever reason
     - If you're writing in C to get closer to the metal, Clojure can't help you
 * Live coding example: FizzBuzz
 * Questions?
 * Resources
+ - http://www.braveclojure.com Clojure for the Brave and True - a good introduction to Clojure
+ - http://clojure.github.io Up-to-date Clojure API docs
+ - http://leiningen.org/ Leiningen, the standard Clojure build tool/environment
+ - http://blog.cognitect.com Cognitect Blog, from the people who maintain the langauge standard
+ - http://cursiveclojure.com Cursive Clojure plugin for IntelliJ IDEA, provides REPL support, Leiningen suport
+ - http://github.com/hlprmnky/tech-share/ This talk on GitHub with slides and source
 * Thanks for listening!
