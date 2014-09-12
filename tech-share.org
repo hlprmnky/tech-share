@@ -1,0 +1,61 @@
+#+TITLE: Clojure: How it works, and how it can work for you
+#+AUTHOR: Chris Johnson Bidler
+#+EMAIL: cbidler@spscommerce.com
+#+DATE: September 12, 2014
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/2.5.0/
+* Introduction - Who is this guy?
+ - Chris Johnson Bidler
+ - Joined SPS Commerce in June of 2014, on Document Engine team
+ - Lives in South Bend, IN but ironically doesn't follow college football
+ - Software developer since 1998, *mostly* Java, some C/C++, some Perl
+ - Long tenure in healthcare IT, moved to retail SaaS in 2011
+ - Interested in big data, web-scale + real-time
+ - Also interested in UI concerns, mitigating perceptual bias
+ - I have an app on the iOS App Store
+* Clojure - Elevator summary
+ - Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM
+ - (many) advantages of LISP
+   - First-class functions and macros provide expressive power Java lacks
+   - Pure functions encourage de-complecting "state management" and "business logic"
+   - REPL allows for very fast development cycles
+ - (many) advantages of the Java ecosystem
+   - Interop with Java code is dead easy
+   - Decades of performance work on the JVM benefits Clojure directly
+   - Can use web-scale and cloud solutions for the JVM
+* What does Clojure ask you to do?
+  - Be willing to learn new things
+    - LISP syntax is not harder than Java/Python, but is different
+    - Thinking about problems as composed functions instead of collaborating objects
+    - Build tools are strictly better than Maven, but still have a (gentle) learning curve
+  - Think carefully about your code
+    - Functional approach turns the object-oriented world a bit on its head
+    - Keeping state of data and transforms on data separate can take getting used to
+* What does Clojure offer you in return?
+  - Excellent concurrency support at the language level
+  - Very rapid prototyping and development
+  - Virtually no "boilerplate" code to accomplish tasks
+    - Smaller functions that can be composed
+    - Easier to understand a system quicky when it fits on a screen
+  - Solving problems becomes about solving the problems
+* When might you want to consider Clojure
+  - You are starting a new project
+    - Getting polyglot *IDE-level projects* to build and run can be a challenge
+    - Polyglot projects that federate smaller services are much easier
+  - Interop needs are amenable
+    - Java
+    - REST APIs
+    - Queue endpoints (JMS, SQS, etc.)
+  - Team is on board and has some cycles to learn new things
+* When might you *not* want to consider Clojure
+  - Working with a large legacy codebase
+    - Dropping new .clj into a Java project can be a headache
+  - Hard interop requirements with native non-Java
+    - Python libraries with no Java equivalent
+    - Proprietary data formats (do we have these?)
+  - Building a thick-client GUI application
+  - Performance needs not met by modern JVMs
+    - If you're writing in C to get closer to the metal, Clojure can't help you
+* Live coding example: FizzBuzz
+* Questions?
+* Resources
+* Thanks for listening!

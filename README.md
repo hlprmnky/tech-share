@@ -1,6 +1,16 @@
-# tech-share
+# TechShare talk - Sept. 12, 2014 Source and slides
 
-The project uses [Midje](https://github.com/marick/Midje/).
+This is a trivial implementation of FizzBuzz which was live-coded during a 
+TechShare talk on Clojure given at SPS Commerce on September 12, 2014.
+The project uses [Midje](https://github.com/marick/Midje/) for unit testing.
+
+## How to run the project
+
+### Get [Leiningen](https://leiningen.org/)
+If you have [Homebrew](https://brew.sh/) already, this is just a `brew install leiningen` away
+### Clone this project into a dir
+### cd into that dir and type `lein repl`
+### win
 
 ## How to run the tests
 
