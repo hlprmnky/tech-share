@@ -5,7 +5,7 @@
 <title>Clojure: How it works, and how it can work for you</title>
 <meta name="author" content="(Chris Johnson Bidler)"/>
 <link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.css"/>
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/sky.css" id="theme"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/moon.css" id="theme"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -33,16 +33,28 @@
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#/slide-orgheadline1">1. Introduction - Who is this guy?</a></li>
-<li><a href="#/slide-orgheadline2">2. Clojure - Elevator summary</a></li>
-<li><a href="#/slide-orgheadline3">3. What does Clojure ask you to do?</a></li>
-<li><a href="#/slide-orgheadline4">4. What does Clojure offer you in return?</a></li>
-<li><a href="#/slide-orgheadline5">5. When might you want to consider Clojure</a></li>
-<li><a href="#/slide-orgheadline6">6. When might you <b>not</b> want to consider Clojure</a></li>
-<li><a href="#/slide-orgheadline8">7. Success stories: Netflix, Walmart Labs, etc.</a></li>
-<li><a href="#/slide-orgheadline9">8. Live coding example: FizzBuzz</a></li>
-<li><a href="#/slide-orgheadline10">9. Questions?</a></li>
-<li><a href="#/slide-orgheadline7">10. Resources</a></li>
-<li><a href="#/slide-orgheadline11">11. Thanks for listening!</a></li>
+<li><a href="#/slide-orgheadline5">2. Clojure - Elevator summary</a>
+<ul>
+<li><a href="#/slide-orgheadline2">2.1. Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM</a></li>
+<li><a href="#/slide-orgheadline3">2.2. (many) advantages of LISP</a></li>
+<li><a href="#/slide-orgheadline4">2.3. (many) advantages of the host ecosystem</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline8">3. What does Clojure ask you to do?</a>
+<ul>
+<li><a href="#/slide-orgheadline6">3.1. Be willing to learn new things</a></li>
+<li><a href="#/slide-orgheadline7">3.2. Think carefully about your code</a></li>
+</ul>
+</li>
+<li><a href="#/slide-orgheadline9">4. What does Clojure offer you in return?</a></li>
+<li><a href="#/slide-orgheadline10">5. ClojureScript</a></li>
+<li><a href="#/slide-orgheadline11">6. When might you want to consider Clojure</a></li>
+<li><a href="#/slide-orgheadline12">7. When might you <b>not</b> want to consider Clojure</a></li>
+<li><a href="#/slide-orgheadline14">8. Success stories: Netflix, Walmart Labs, etc.</a></li>
+<li><a href="#/slide-orgheadline15">9. Live coding example: FizzBuzz</a></li>
+<li><a href="#/slide-orgheadline16">10. Questions?</a></li>
+<li><a href="#/slide-orgheadline13">11. Resources</a></li>
+<li><a href="#/slide-orgheadline17">12. Thanks for listening!</a></li>
 </ul>
 </div>
 </div>
@@ -65,22 +77,28 @@
 </section>
 </section>
 <section>
+<section id="slide-orgheadline5">
+<h2 id="orgheadline5"><span class="section-number-2">2</span> Clojure - Elevator summary</h2>
+<div class="outline-text-2" id="text-2">
+</div></section>
 <section id="slide-orgheadline2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Clojure - Elevator summary</h2>
-<ul>
-<li>Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM</h3>
 <ul>
 <li>Also compiles to .NET CLR and Javascript (including Node.js)</li>
 
-</ul></li>
-<li>(many) advantages of LISP
+</ul>
+</section>
+<section id="slide-orgheadline3">
+<h3 id="orgheadline3"><span class="section-number-3">2.2</span> (many) advantages of LISP</h3>
 <ul>
 <li>First-class functions and macros provide expressive power</li>
 <li>Functional style encourages de-complecting "state management" from "business logic"</li>
 <li>REPL allows for very fast development cycles</li>
 
-</ul></li>
-<li>(many) advantages of the host ecosystem
+</ul>
+</section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4"><span class="section-number-3">2.3</span> (many) advantages of the host ecosystem</h3>
 <ul>
 <li>Interop with Java/JS/C# code is dead easy</li>
 <li>Decades of performance work on these runtimes benefits Clojure directly</li>
@@ -91,36 +109,36 @@
 
 </ul></li>
 
-</ul></li>
-
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgheadline3">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> What does Clojure ask you to do?</h2>
-<ul>
-<li>Be willing to learn new things
+<section id="slide-orgheadline8">
+<h2 id="orgheadline8"><span class="section-number-2">3</span> What does Clojure ask you to do?</h2>
+<div class="outline-text-2" id="text-3">
+</div></section>
+<section id="slide-orgheadline6">
+<h3 id="orgheadline6"><span class="section-number-3">3.1</span> Be willing to learn new things</h3>
 <ul>
 <li>LISP syntax is not harder than Java/Python, but is different</li>
 <li>Thinking about problems as composed functions instead of collaborating objects</li>
 <li>Build tools are strictly better than Maven, but still have a (gentle) learning curve</li>
 
-</ul></li>
-<li>Think carefully about your code
+</ul>
+</section>
+<section id="slide-orgheadline7">
+<h3 id="orgheadline7"><span class="section-number-3">3.2</span> Think carefully about your code</h3>
 <ul>
 <li>Functional approach turns the object-oriented world a bit on its head</li>
 <li>Keeping state of data and transforms on data separate can take getting used to</li>
-
-</ul></li>
 
 </ul>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline4">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> What does Clojure offer you in return?</h2>
+<section id="slide-orgheadline9">
+<h2 id="orgheadline9"><span class="section-number-2">4</span> What does Clojure offer you in return?</h2>
 <ul>
 <li>Excellent concurrency support at the language level</li>
 <li>Very rapid prototyping and development</li>
@@ -130,21 +148,26 @@
 <li>Easier to understand a system quicky when it fits on a screen</li>
 
 </ul></li>
-<li>ClojureScript
-<ul>
-<li>Compiles to JavaScript</li>
-<li>Plays well with frameworks like Angular/React</li>
-<li>Provides the best way out of "callback hell" I have yet seen</li>
-
-</ul></li>
 <li>Solving problems becomes about solving the problems</li>
 
 </ul>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline5">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> When might you want to consider Clojure</h2>
+<section id="slide-orgheadline10">
+<h2 id="orgheadline10"><span class="section-number-2">5</span> ClojureScript</h2>
+<ul>
+<li>Compiles to JavaScript</li>
+<li>Plays well with frameworks like Angular/React</li>
+<li>Plays well with Node.js</li>
+<li>Provides the best way out of "callback hell" I have yet seen</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline11">
+<h2 id="orgheadline11"><span class="section-number-2">6</span> When might you want to consider Clojure</h2>
 <ul>
 <li>Your project is largely "about" concurrency
 <ul>
@@ -166,8 +189,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgheadline6">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> When might you <b>not</b> want to consider Clojure</h2>
+<section id="slide-orgheadline12">
+<h2 id="orgheadline12"><span class="section-number-2">7</span> When might you <b>not</b> want to consider Clojure</h2>
 <ul>
 <li>Working with a large legacy codebase
 <ul>
@@ -191,11 +214,11 @@
 </section>
 </section>
 <section>
-<section id="slide-orgheadline8">
-<h2 id="orgheadline8"><span class="section-number-2">7</span> Success stories: Netflix, Walmart Labs, etc.</h2>
+<section id="slide-orgheadline14">
+<h2 id="orgheadline14"><span class="section-number-2">8</span> Success stories: Netflix, Walmart Labs, etc.</h2>
 <ul>
 <li>Many "serious business" companies have adopted Clojure to varying degrees</li>
-<li>Other people's talks about this are better than mine, see <a href="#/slide-orgheadline7">the Resources slide</a></li>
+<li>Other people's talks about this are better than mine, see <a href="#/slide-orgheadline13">the Resources slide</a></li>
 <li>Common themes are:
 <ul>
 <li>Start small</li>
@@ -209,25 +232,24 @@
 </section>
 </section>
 <section>
-<section id="slide-orgheadline9">
-<h2 id="orgheadline9"><span class="section-number-2">8</span> Live coding example: FizzBuzz</h2>
+<section id="slide-orgheadline15">
+<h2 id="orgheadline15"><span class="section-number-2">9</span> Live coding example: FizzBuzz</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline10">
-<h2 id="orgheadline10"><span class="section-number-2">9</span> Questions?</h2>
+<section id="slide-orgheadline16">
+<h2 id="orgheadline16"><span class="section-number-2">10</span> Questions?</h2>
 </section>
 </section>
 <section>
-<section id="slide-orgheadline7">
-<h2 id="orgheadline7"><span class="section-number-2">10</span> Resources</h2>
+<section id="slide-orgheadline13">
+<h2 id="orgheadline13"><span class="section-number-2">11</span> Resources</h2>
 <ul>
 <li><a href="http://www.braveclojure.com/">http://www.braveclojure.com/</a> Clojure for the Brave and True - a good introduction to Clojure</li>
 <li><a href="https://pragprog.com/book/vmclojeco/clojure-applied">Clojure Applied</a> - Excellent "200-level" book that talks about application and data design</li>
 <li><a href="http://clojure.github.io/">http://clojure.github.io/</a> Up-to-date Clojure API docs</li>
 <li><a href="http://leiningen.org/">http://leiningen.org/</a> Leiningen, the standard Clojure build tool/environment</li>
 <li><a href="http://blog.cognitect.com/">http://blog.cognitect.com/</a> Cognitect Blog, from the people who maintain the langauge standard</li>
-<li><a href="http://cursiveclojure.com/">http://cursiveclojure.com/</a> Cursive Clojure plugin for IntelliJ IDEA, provides REPL support, Leiningen suport</li>
 <li><a href="https://speakerdeck.com/daveray/clojure-at-netflix">https://speakerdeck.com/daveray/clojure-at-netflix</a> Clojure at Netflix</li>
 <li><a href="https://youtu.be/av9Xi6CNqq4">Clojure at Scale @ Walmart Labs</a> - Talk by Anthony Marcar at Clojure/West 2015</li>
 <li><a href="http://github.com/hlprmnky/tech-share/">http://github.com/hlprmnky/tech-share/</a> This talk on GitHub with slides and source</li>
@@ -236,8 +258,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgheadline11">
-<h2 id="orgheadline11"><span class="section-number-2">11</span> Thanks for listening!</h2>
+<section id="slide-orgheadline17">
+<h2 id="orgheadline17"><span class="section-number-2">12</span> Thanks for listening!</h2>
 </section>
 </section>
 </div>

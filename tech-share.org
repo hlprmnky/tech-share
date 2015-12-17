@@ -3,7 +3,7 @@
 #+EMAIL: chris@hlprmnky.com
 #+DATE: December 17, 2015
 #+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/2.5.0/
-#+REVEAL_THEME: sky
+#+REVEAL_THEME: moon
 * Introduction - Who is this guy?
  - Chris Johnson Bidler
  - Currently working at SPS Commerce, Inc. on AWS-native document workflow engine
@@ -15,13 +15,13 @@
  - Also interested in UI concerns, mitigating perceptual bias
  - I have an app on the iOS App Store
 * Clojure - Elevator summary
- - Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM
+** Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM
    - Also compiles to .NET CLR and Javascript (including Node.js)
- - (many) advantages of LISP
+** (many) advantages of LISP
    - First-class functions and macros provide expressive power
    - Functional style encourages de-complecting "state management" from "business logic"
    - REPL allows for very fast development cycles
- - (many) advantages of the host ecosystem
+** (many) advantages of the host ecosystem
    - Interop with Java/JS/C# code is dead easy
    - Decades of performance work on these runtimes benefits Clojure directly
    - Can use web-scale and cloud solutions for the JVM
@@ -29,11 +29,11 @@
     - Docker-hosted microservices
 
 * What does Clojure ask you to do?
-  - Be willing to learn new things
+** Be willing to learn new things
     - LISP syntax is not harder than Java/Python, but is different
     - Thinking about problems as composed functions instead of collaborating objects
     - Build tools are strictly better than Maven, but still have a (gentle) learning curve
-  - Think carefully about your code
+** Think carefully about your code
     - Functional approach turns the object-oriented world a bit on its head
     - Keeping state of data and transforms on data separate can take getting used to
 * What does Clojure offer you in return?
@@ -42,11 +42,12 @@
   - Virtually no "boilerplate" code to accomplish tasks
     - Smaller functions that can be composed
     - Easier to understand a system quicky when it fits on a screen
-  - ClojureScript
+  - Solving problems becomes about solving the problems
+* ClojureScript
     - Compiles to JavaScript
     - Plays well with frameworks like Angular/React
+    - Plays well with Node.js
     - Provides the best way out of "callback hell" I have yet seen
-  - Solving problems becomes about solving the problems
 * When might you want to consider Clojure
   - Your project is largely "about" concurrency
     - Producer/consumer
@@ -82,7 +83,6 @@
  - http://clojure.github.io Up-to-date Clojure API docs
  - http://leiningen.org/ Leiningen, the standard Clojure build tool/environment
  - http://blog.cognitect.com Cognitect Blog, from the people who maintain the langauge standard
- - http://cursiveclojure.com Cursive Clojure plugin for IntelliJ IDEA, provides REPL support, Leiningen suport
  - https://speakerdeck.com/daveray/clojure-at-netflix Clojure at Netflix
  - [[https://youtu.be/av9Xi6CNqq4][Clojure at Scale @ Walmart Labs]] - Talk by Anthony Marcar at Clojure/West 2015
  - http://github.com/hlprmnky/tech-share/ This talk on GitHub with slides and source
