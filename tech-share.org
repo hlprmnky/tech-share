@@ -1,12 +1,12 @@
 #+TITLE: Clojure: How it works, and how it can work for you
 #+AUTHOR: Chris Johnson Bidler
-#+EMAIL: cbidler@spscommerce.com
-#+DATE: September 12, 2014
+#+EMAIL: chris@hlprmnky.com
+#+DATE: December 17, 2015
 #+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/2.5.0/
-#+REVEAL_THEME: simple
+#+REVEAL_THEME: sky
 * Introduction - Who is this guy?
  - Chris Johnson Bidler
- - Joined SPS Commerce in June of 2014, on Document Engine team
+ - Currently working at SPS Commerce, Inc. on AWS-native document workflow engine
  - Grew up in the Twin Cities and lived there until 2011
  - Lives in South Bend, IN but ironically doesn't follow college football
  - Software developer since 1998, *mostly* Java, some C/C++, some Perl
@@ -16,14 +16,18 @@
  - I have an app on the iOS App Store
 * Clojure - Elevator summary
  - Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM
+   - Also compiles to .NET CLR and Javascript (including Node.js)
  - (many) advantages of LISP
-   - First-class functions and macros provide expressive power Java lacks
-   - Pure functions encourage de-complecting "state management" and "business logic"
+   - First-class functions and macros provide expressive power
+   - Functional style encourages de-complecting "state management" from "business logic"
    - REPL allows for very fast development cycles
- - (many) advantages of the Java ecosystem
-   - Interop with Java code is dead easy
-   - Decades of performance work on the JVM benefits Clojure directly
+ - (many) advantages of the host ecosystem
+   - Interop with Java/JS/C# code is dead easy
+   - Decades of performance work on these runtimes benefits Clojure directly
    - Can use web-scale and cloud solutions for the JVM
+    - AWS Lambda
+    - Docker-hosted microservices
+
 * What does Clojure ask you to do?
   - Be willing to learn new things
     - LISP syntax is not harder than Java/Python, but is different
@@ -58,17 +62,28 @@
     - Dropping new .clj into a Java project can be a headache
   - Hard interop requirements with native non-Java
     - Python libraries with no Java equivalent
-    - Proprietary data formats (do we have these?)
+    - Proprietary data formats or ABIs with no easy bridge to Java/C# land
   - Building a thick-client GUI application
   - Anywhere Java isn't a good fit for whatever reason
     - If you're writing in C to get closer to the metal, Clojure can't help you
+* Success stories: Netflix, Walmart Labs, etc.
+  - Many "serious business" companies have adopted Clojure to varying degrees
+  - Other people's talks about this are better than mine, see [[Resources][the Resources slide]]
+  - Common themes are:
+    - Start small
+    - Use Clojure for tests of existing codebases
+    - Build ancillary services and one-offs (DB migrations, etc.)
+    - Learn from the community but don't be beholden to them
 * Live coding example: FizzBuzz
 * Questions?
 * Resources
  - http://www.braveclojure.com Clojure for the Brave and True - a good introduction to Clojure
+ - [[https://pragprog.com/book/vmclojeco/clojure-applied][Clojure Applied]] - Excellent "200-level" book that talks about application and data design
  - http://clojure.github.io Up-to-date Clojure API docs
  - http://leiningen.org/ Leiningen, the standard Clojure build tool/environment
  - http://blog.cognitect.com Cognitect Blog, from the people who maintain the langauge standard
  - http://cursiveclojure.com Cursive Clojure plugin for IntelliJ IDEA, provides REPL support, Leiningen suport
+ - https://speakerdeck.com/daveray/clojure-at-netflix Clojure at Netflix
+ - [[https://youtu.be/av9Xi6CNqq4][Clojure at Scale @ Walmart Labs]] - Talk by Anthony Marcar at Clojure/West 2015
  - http://github.com/hlprmnky/tech-share/ This talk on GitHub with slides and source
 * Thanks for listening!

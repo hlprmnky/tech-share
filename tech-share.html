@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>Clojure: How it works, and how it can work for you</title>
 <meta name="author" content="(Chris Johnson Bidler)"/>
-
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.min.css"/>
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/simple.css" id="theme"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.css"/>
+<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/sky.css" id="theme"/>
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -23,269 +21,229 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section>
+<section id="sec-title-slide">
 <h1>Clojure: How it works, and how it can work for you</h1>
 <h2>Chris Johnson Bidler</h2>
-<h2><a href="mailto:cbidler@spscommerce.com">cbidler@spscommerce.com</a></h2>
-<h2>September 12, 2014</h2></section>
+<h2><a href="mailto:chris@hlprmnky.com">chris@hlprmnky.com</a></h2>
+<h2>December 17, 2015</h2>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orgheadline1">1. Introduction - Who is this guy?</a></li>
+<li><a href="#/slide-orgheadline2">2. Clojure - Elevator summary</a></li>
+<li><a href="#/slide-orgheadline3">3. What does Clojure ask you to do?</a></li>
+<li><a href="#/slide-orgheadline4">4. What does Clojure offer you in return?</a></li>
+<li><a href="#/slide-orgheadline5">5. When might you want to consider Clojure</a></li>
+<li><a href="#/slide-orgheadline6">6. When might you <b>not</b> want to consider Clojure</a></li>
+<li><a href="#/slide-orgheadline8">7. Success stories: Netflix, Walmart Labs, etc.</a></li>
+<li><a href="#/slide-orgheadline9">8. Live coding example: FizzBuzz</a></li>
+<li><a href="#/slide-orgheadline10">9. Questions?</a></li>
+<li><a href="#/slide-orgheadline7">10. Resources</a></li>
+<li><a href="#/slide-orgheadline11">11. Thanks for listening!</a></li>
+</ul>
+</div>
+</div>
+</section>
 <section>
-<h2>Table of Contents</h2><ul>
-<li>
-<a href="#sec-1">Introduction - Who is this guy?</a>
-</li>
-<li>
-<a href="#sec-2">Clojure - Elevator summary</a>
-</li>
-<li>
-<a href="#sec-3">What does Clojure ask you to do?</a>
-</li>
-<li>
-<a href="#sec-4">What does Clojure offer you in return?</a>
-</li>
-<li>
-<a href="#sec-5">When might you want to consider Clojure</a>
-</li>
-<li>
-<a href="#sec-6">When might you <b>not</b> want to consider Clojure</a>
-</li>
-<li>
-<a href="#sec-7">Live coding example: FizzBuzz</a>
-</li>
-<li>
-<a href="#sec-8">Questions?</a>
-</li>
-<li>
-<a href="#sec-9">Resources</a>
-</li>
-<li>
-<a href="#sec-10">Thanks for listening!</a>
-</li>
+<section id="slide-orgheadline1">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Introduction - Who is this guy?</h2>
+<ul>
+<li>Chris Johnson Bidler</li>
+<li>Currently working at SPS Commerce, Inc. on AWS-native document workflow engine</li>
+<li>Grew up in the Twin Cities and lived there until 2011</li>
+<li>Lives in South Bend, IN but ironically doesn't follow college football</li>
+<li>Software developer since 1998, <b>mostly</b> Java, some C/C++, some Perl</li>
+<li>Long tenure in healthcare IT, moved to retail SaaS in 2011</li>
+<li>Interested in big data, web-scale + real-time</li>
+<li>Also interested in UI concerns, mitigating perceptual bias</li>
+<li>I have an app on the iOS App Store</li>
+
 </ul>
 </section>
-<section>
-<section id="sec-1" >
-
-<h2><span class="section-number-2">1</span> Introduction - Who is this guy?</h2>
-<ul class="org-ul">
-<li>Chris Johnson Bidler
-</li>
-<li>Joined SPS Commerce in June of 2014, on Document Engine team
-</li>
-<li>Grew up in the Twin Cities and lived there until 2011
-</li>
-<li>Lives in South Bend, IN but ironically doesn't follow college football
-</li>
-<li>Software developer since 1998, <b>mostly</b> Java, some C/C++, some Perl
-</li>
-<li>Long tenure in healthcare IT, moved to retail SaaS in 2011
-</li>
-<li>Interested in big data, web-scale + real-time
-</li>
-<li>Also interested in UI concerns, mitigating perceptual bias
-</li>
-<li>I have an app on the iOS App Store
-</li>
-</ul>
-</section>
-
 </section>
 <section>
-<section id="sec-2" >
-
-<h2><span class="section-number-2">2</span> Clojure - Elevator summary</h2>
-<ul class="org-ul">
+<section id="slide-orgheadline2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> Clojure - Elevator summary</h2>
+<ul>
 <li>Clojure is a dialect of LISP that compiles to Java bytecode and runs in the JVM
-</li>
+<ul>
+<li>Also compiles to .NET CLR and Javascript (including Node.js)</li>
+
+</ul></li>
 <li>(many) advantages of LISP
-<ul class="org-ul">
-<li>First-class functions and macros provide expressive power Java lacks
-</li>
-<li>Pure functions encourage de-complecting "state management" and "business logic"
-</li>
-<li>REPL allows for very fast development cycles
-</li>
-</ul>
-</li>
-<li>(many) advantages of the Java ecosystem
-<ul class="org-ul">
-<li>Interop with Java code is dead easy
-</li>
-<li>Decades of performance work on the JVM benefits Clojure directly
-</li>
+<ul>
+<li>First-class functions and macros provide expressive power</li>
+<li>Functional style encourages de-complecting "state management" from "business logic"</li>
+<li>REPL allows for very fast development cycles</li>
+
+</ul></li>
+<li>(many) advantages of the host ecosystem
+<ul>
+<li>Interop with Java/JS/C# code is dead easy</li>
+<li>Decades of performance work on these runtimes benefits Clojure directly</li>
 <li>Can use web-scale and cloud solutions for the JVM
-</li>
-</ul>
-</li>
-</ul>
-</section>
+<ul>
+<li>AWS Lambda</li>
+<li>Docker-hosted microservices</li>
 
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
 </section>
 <section>
-<section id="sec-3" >
-
-<h2><span class="section-number-2">3</span> What does Clojure ask you to do?</h2>
-<ul class="org-ul">
+<section id="slide-orgheadline3">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> What does Clojure ask you to do?</h2>
+<ul>
 <li>Be willing to learn new things
-<ul class="org-ul">
-<li>LISP syntax is not harder than Java/Python, but is different
-</li>
-<li>Thinking about problems as composed functions instead of collaborating objects
-</li>
-<li>Build tools are strictly better than Maven, but still have a (gentle) learning curve
-</li>
-</ul>
-</li>
+<ul>
+<li>LISP syntax is not harder than Java/Python, but is different</li>
+<li>Thinking about problems as composed functions instead of collaborating objects</li>
+<li>Build tools are strictly better than Maven, but still have a (gentle) learning curve</li>
+
+</ul></li>
 <li>Think carefully about your code
-<ul class="org-ul">
-<li>Functional approach turns the object-oriented world a bit on its head
-</li>
-<li>Keeping state of data and transforms on data separate can take getting used to
-</li>
-</ul>
-</li>
+<ul>
+<li>Functional approach turns the object-oriented world a bit on its head</li>
+<li>Keeping state of data and transforms on data separate can take getting used to</li>
+
+</ul></li>
+
 </ul>
 </section>
-
 </section>
 <section>
-<section id="sec-4" >
-
-<h2><span class="section-number-2">4</span> What does Clojure offer you in return?</h2>
-<ul class="org-ul">
-<li>Excellent concurrency support at the language level
-</li>
-<li>Very rapid prototyping and development
-</li>
+<section id="slide-orgheadline4">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> What does Clojure offer you in return?</h2>
+<ul>
+<li>Excellent concurrency support at the language level</li>
+<li>Very rapid prototyping and development</li>
 <li>Virtually no "boilerplate" code to accomplish tasks
-<ul class="org-ul">
-<li>Smaller functions that can be composed
-</li>
-<li>Easier to understand a system quicky when it fits on a screen
-</li>
-</ul>
-</li>
+<ul>
+<li>Smaller functions that can be composed</li>
+<li>Easier to understand a system quicky when it fits on a screen</li>
+
+</ul></li>
 <li>ClojureScript
-<ul class="org-ul">
-<li>Compiles to JavaScript
-</li>
-<li>Plays well with frameworks like Angular/React
-</li>
-<li>Provides the best way out of "callback hell" I have yet seen
-</li>
-</ul>
-</li>
-<li>Solving problems becomes about solving the problems
-</li>
+<ul>
+<li>Compiles to JavaScript</li>
+<li>Plays well with frameworks like Angular/React</li>
+<li>Provides the best way out of "callback hell" I have yet seen</li>
+
+</ul></li>
+<li>Solving problems becomes about solving the problems</li>
+
 </ul>
 </section>
-
 </section>
 <section>
-<section id="sec-5" >
-
-<h2><span class="section-number-2">5</span> When might you want to consider Clojure</h2>
-<ul class="org-ul">
+<section id="slide-orgheadline5">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> When might you want to consider Clojure</h2>
+<ul>
 <li>Your project is largely "about" concurrency
-<ul class="org-ul">
-<li>Producer/consumer
-</li>
-<li>Map/reduce
-</li>
-<li>Document transforms
-</li>
-</ul>
-</li>
+<ul>
+<li>Producer/consumer</li>
+<li>Map/reduce</li>
+<li>Document transforms</li>
+
+</ul></li>
 <li>Interop needs are amenable
-<ul class="org-ul">
-<li>Java
-</li>
-<li>REST APIs
-</li>
-<li>Queue endpoints (JMS, SQS, etc.)
-</li>
-</ul>
-</li>
-<li>Team is on board and has some cycles to learn new things
-</li>
+<ul>
+<li>Java</li>
+<li>REST APIs</li>
+<li>Queue endpoints (JMS, SQS, etc.)</li>
+
+</ul></li>
+<li>Team is on board and has some cycles to learn new things</li>
+
 </ul>
 </section>
-
 </section>
 <section>
-<section id="sec-6" >
-
-<h2><span class="section-number-2">6</span> When might you <b>not</b> want to consider Clojure</h2>
-<ul class="org-ul">
+<section id="slide-orgheadline6">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> When might you <b>not</b> want to consider Clojure</h2>
+<ul>
 <li>Working with a large legacy codebase
-<ul class="org-ul">
-<li>Dropping new .clj into a Java project can be a headache
-</li>
-</ul>
-</li>
+<ul>
+<li>Dropping new .clj into a Java project can be a headache</li>
+
+</ul></li>
 <li>Hard interop requirements with native non-Java
-<ul class="org-ul">
-<li>Python libraries with no Java equivalent
-</li>
-<li>Proprietary data formats (do we have these?)
-</li>
-</ul>
-</li>
-<li>Building a thick-client GUI application
-</li>
+<ul>
+<li>Python libraries with no Java equivalent</li>
+<li>Proprietary data formats or ABIs with no easy bridge to Java/C# land</li>
+
+</ul></li>
+<li>Building a thick-client GUI application</li>
 <li>Anywhere Java isn't a good fit for whatever reason
-<ul class="org-ul">
-<li>If you're writing in C to get closer to the metal, Clojure can't help you
-</li>
-</ul>
-</li>
-</ul>
-</section>
+<ul>
+<li>If you're writing in C to get closer to the metal, Clojure can't help you</li>
 
-</section>
-<section>
-<section id="sec-7" >
+</ul></li>
 
-<h2><span class="section-number-2">7</span> Live coding example: FizzBuzz</h2>
-</section>
-</section>
-<section>
-<section id="sec-8" >
-
-<h2><span class="section-number-2">8</span> Questions?</h2>
-</section>
-</section>
-<section>
-<section id="sec-9" >
-
-<h2><span class="section-number-2">9</span> Resources</h2>
-<ul class="org-ul">
-<li><a href="http://www.braveclojure.com">http://www.braveclojure.com</a> Clojure for the Brave and True - a good introduction to Clojure
-</li>
-<li><a href="http://clojure.github.io">http://clojure.github.io</a> Up-to-date Clojure API docs
-</li>
-<li><a href="http://leiningen.org/">http://leiningen.org/</a> Leiningen, the standard Clojure build tool/environment
-</li>
-<li><a href="http://blog.cognitect.com">http://blog.cognitect.com</a> Cognitect Blog, from the people who maintain the langauge standard
-</li>
-<li><a href="http://cursiveclojure.com">http://cursiveclojure.com</a> Cursive Clojure plugin for IntelliJ IDEA, provides REPL support, Leiningen suport
-</li>
-<li><a href="http://github.com/hlprmnky/tech-share/">http://github.com/hlprmnky/tech-share/</a> This talk on GitHub with slides and source
-</li>
 </ul>
 </section>
-
 </section>
 <section>
-<section id="sec-10" >
+<section id="slide-orgheadline8">
+<h2 id="orgheadline8"><span class="section-number-2">7</span> Success stories: Netflix, Walmart Labs, etc.</h2>
+<ul>
+<li>Many "serious business" companies have adopted Clojure to varying degrees</li>
+<li>Other people's talks about this are better than mine, see <a href="#/slide-orgheadline7">the Resources slide</a></li>
+<li>Common themes are:
+<ul>
+<li>Start small</li>
+<li>Use Clojure for tests of existing codebases</li>
+<li>Build ancillary services and one-offs (DB migrations, etc.)</li>
+<li>Learn from the community but don't be beholden to them</li>
 
-<h2><span class="section-number-2">10</span> Thanks for listening!</h2>
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline9">
+<h2 id="orgheadline9"><span class="section-number-2">8</span> Live coding example: FizzBuzz</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline10">
+<h2 id="orgheadline10"><span class="section-number-2">9</span> Questions?</h2>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline7">
+<h2 id="orgheadline7"><span class="section-number-2">10</span> Resources</h2>
+<ul>
+<li><a href="http://www.braveclojure.com/">http://www.braveclojure.com/</a> Clojure for the Brave and True - a good introduction to Clojure</li>
+<li><a href="https://pragprog.com/book/vmclojeco/clojure-applied">Clojure Applied</a> - Excellent "200-level" book that talks about application and data design</li>
+<li><a href="http://clojure.github.io/">http://clojure.github.io/</a> Up-to-date Clojure API docs</li>
+<li><a href="http://leiningen.org/">http://leiningen.org/</a> Leiningen, the standard Clojure build tool/environment</li>
+<li><a href="http://blog.cognitect.com/">http://blog.cognitect.com/</a> Cognitect Blog, from the people who maintain the langauge standard</li>
+<li><a href="http://cursiveclojure.com/">http://cursiveclojure.com/</a> Cursive Clojure plugin for IntelliJ IDEA, provides REPL support, Leiningen suport</li>
+<li><a href="https://speakerdeck.com/daveray/clojure-at-netflix">https://speakerdeck.com/daveray/clojure-at-netflix</a> Clojure at Netflix</li>
+<li><a href="https://youtu.be/av9Xi6CNqq4">Clojure at Scale @ Walmart Labs</a> - Talk by Anthony Marcar at Clojure/West 2015</li>
+<li><a href="http://github.com/hlprmnky/tech-share/">http://github.com/hlprmnky/tech-share/</a> This talk on GitHub with slides and source</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline11">
+<h2 id="orgheadline11"><span class="section-number-2">11</span> Thanks for listening!</h2>
 </section>
 </section>
 </div>
 </div>
-
 <script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/head.min.js"></script>
-<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/js/reveal.min.js"></script>
+<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -296,7 +254,7 @@ controls: true,
 progress: true,
 history: false,
 center: true,
-slideNumber: true,
+slideNumber: 'c',
 rollingLinks: false,
 keyboard: true,
 overview: true,
@@ -304,16 +262,19 @@ overview: true,
 theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
  { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
  { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
  { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
  { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
+ { src: 'http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 });
 </script>
 </body>
